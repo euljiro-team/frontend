@@ -5,7 +5,7 @@ function resolve(dir) {
     return path.join(__dirname, dir)
 }
 
-const name = 'English Door' // page title
+const name = 'Euljiro' // page title
 
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
@@ -28,8 +28,7 @@ module.exports = {
     lintOnSave: process.env.NODE_ENV === 'development',
     productionSourceMap: false,
     devServer: {
-        // host: 'en9doors.com',
-        public: `en9doors.com:${port}`,
+        public: `loaclhost:${port}`,
         port: port,
         open: true,
         disableHostCheck: true,
@@ -44,12 +43,12 @@ module.exports = {
         },
         proxy: {
             "/api": {
-                target: "http://en9doors.com:34001",
+                target: "http://loaclhost:34001",
                 ws: true,
                 changeOrigin: true
             },
             "/files": {
-                target: "http://en9doors.com:34021",
+                target: "http://loaclhost:34021",
                 ws: true,
                 changeOrigin: true
             }
