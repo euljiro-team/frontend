@@ -23,12 +23,14 @@ module.exports = {
      * Detail: https://cli.vuejs.org/config/#publicpath
      */
     publicPath: '/',
+
     outputDir: 'dist',
     assetsDir: 'static',
     lintOnSave: process.env.NODE_ENV === 'development',
     productionSourceMap: false,
+
     devServer: {
-        public: `loaclhost:${port}`,
+        public: `localhost:${port}`,
         port: port,
         open: true,
         disableHostCheck: true,
@@ -43,18 +45,19 @@ module.exports = {
         },
         proxy: {
             "/api": {
-                target: "http://loaclhost:34001",
+                target: "http://localhost:34001",
                 ws: true,
                 changeOrigin: true
             },
             "/files": {
-                target: "http://loaclhost:34021",
+                target: "http://localhost:34021",
                 ws: true,
                 changeOrigin: true
             }
         },
         publicPath: "/"
     },
+
     configureWebpack: {
         // provide the app's title in webpack's name field, so that
         // it can be accessed in index.html to inject the correct title.
@@ -138,6 +141,10 @@ module.exports = {
                 config.optimization.runtimeChunk('single')
             }
           )
-    }
+    },
+
+    transpileDependencies: [
+      'vuetify'
+    ]
 }
 
