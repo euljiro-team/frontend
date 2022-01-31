@@ -3,28 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "local": "vue-cli-service serve --mode local",
-    "dev": "vue-cli-service serve --mode development",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "build:prod": "vue-cli-service build --mode production",
-    "build:stage": "vue-cli-service build --mode staging"
+    "build:stage": "vue-cli-service build --mode staging",
+    "dev": "vue-cli-service serve --mode development",
+    "local": "vue-cli-service serve --mode local"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "core-js": "^3.6.5",
     "vue": "2.6.10",
-    "vuex": "3.1.0",
+    "vue-router": "^3.5.3",
     "vue-template-compiler": "2.6.10",
-    "vue-router": "^3.5.3"
+    "vuetify": "^2.4.0",
+    "vuex": "3.1.0"
   },
   "devDependencies": {
+    "@nuxtjs/vuetify": "^1.12.3",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint-plugin-vue": "^7.0.0",
+    "sass": "~1.32.0",
+    "sass-loader": "^10.0.0",
+    "vue-cli-plugin-vuetify": "~2.4.5",
+    "vuetify-loader": "^1.7.0"
   },
   "eslintConfig": {
     "root": true,
