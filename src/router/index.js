@@ -5,6 +5,8 @@ import EnrolClasses from '../components/EnrolClasses.vue'
 import Mmbrship from '../components/Mmbrship.vue'
 import UserInfo from '../components/UserInfo.vue'
 import Notice from '../components/Notice.vue'
+import Meta from '../components/meta/Meta.vue'
+
 
 Vue.use(Router)
 
@@ -42,6 +44,11 @@ const createRouter = () => new Router({
       path : '/notice' ,
       name : 'notice',
       component : Notice
+    },
+    {
+      path : '/meta',
+      name : 'meta',
+      component : Meta
     }
 
   ],

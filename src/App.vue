@@ -66,7 +66,7 @@ export default {
       /* 우선 어디로 이동할지 안정했으니 수강신청 화면으로 이동한다. */
       {  title : '강사 등록' , icon : 'mdi-account'  , to: '/enrolclasses'} , 
       {  title : '회원 관리' , icon : 'mdi-account' , to:'/enrolclasses' } , 
-      {  title : '개발자 관리 화면' , icon : 'mdi-account' , to: '/enrolclasses' } 
+      {  title : '메타 조회' , icon : 'mdi-account' , to: '/meta' } 
     ],
     drawer : false
   }),
