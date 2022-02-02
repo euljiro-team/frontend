@@ -12,6 +12,7 @@ vue add vue-cli-plugin-axios
 ```
 npm run serve
 npm run local #개발서버 기동
+npm run local ##local 서버 기동시
 ```
 
 ### Compiles and minifies for production
