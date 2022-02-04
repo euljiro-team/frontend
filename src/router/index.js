@@ -15,18 +15,17 @@ Vue.use(Router)
 const createRouter = () => new Router({
   mode: 'history',
   routes: [
-    //   // children: [
-    //   //   {path: '/', component: () => import(/* webpackChunkName: "common" */'@/views/en9door/main/main'), name: 'Main', meta: {title: 'English Door'}},
-    //   //   {path: '/login', component: () => import(/* webpackChunkName: "common" */'@/views/login/index'), hidden: true},
-    //   //   ...commonRouter,
-    //   // ]
-    // },
-    // {path: '/oauth/redirect', component: () => import('@/views/login/redirect'), hidden: true},
-    // {path: '/logout', component: () => import('@/views/login/logout'), hidden: true},
-    // {path: '*', redirect: '/404', hidden: true}
+    { path: '/', component: () => import('@/views/layout/sideLayout'), name: 'Layout',
+      children: [
+        // {path: '/', component: () => import(/* webpackChunkName: "common" */'@/views/euljiro/main/main'), name: 'Main', meta: {title: 'Euljiro'}},
+        {path: '/login', component: () => import(/* webpackChunkName: "common" */'@/views/auth/index'), hidden: true},    
+      ]
+    },
+    {path: '/oauth/redirect', component: () => import('@/views/auth/redirect'), hidden: true},
+    {path: '/logout', component: () => import('@/views/auth/logout'), hidden: true},    
     {
-      path : '/',
-      name : 'index',
+      path : '/membership',
+      name : 'membership',
       component : Mmbrship
     },
     {
@@ -49,8 +48,8 @@ const createRouter = () => new Router({
       path : '/meta',
       name : 'meta',
       component : Meta
-    }
-
+    },
+// {path: '*', redirect: '/404', hidden: true}
   ],
   scrollBehavior () {
     return { x: 0, y: 0 }

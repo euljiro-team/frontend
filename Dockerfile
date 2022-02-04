@@ -1,8 +1,6 @@
 #build stage
 #pull node image
-FROM node:12.18.3 AS build-stage
-# 관리자 email
-MAINTAINER minssan9 minssan9@gmail.com
+FROM node:12.18.3 AS build-stage 
 #working directory
 WORKDIR /app
 #add all files from local to docker
@@ -39,10 +37,10 @@ CMD ["nginx", "-g", "daemon off;"]
 
 
 # docker command
-# docker build -t minssan9/voyagerss_vuejs .
-# docker push minssan9/voyagerss_vuejs
-# docker pull minssan9/voyagerss_vuejs
+# docker build -t ejr_frontend .
+# docker push ejr_frontend
+# docker pull ejr_frontend
 # windows wsl
-# docker run --name voyagerss_vuejs -it -d -p 80:80 -p 443:443 -v /mnt/c/logs:/var/log/nginx --memory="1g"  minssan9/voyagerss_vuejs
+# docker run --name ejr_frontend -it -d -p 80:80 -p 443:443 -v /mnt/c/logs:/var/log/nginx --memory="1g"  ejr_frontend
 #   linux
-# docker run --name voyagerss_vuejs -it -d -p 80:80 -p 443:443 -v /var/log/nginx:/var/log/nginx --memory="1g"  minssan9/voyagerss_vuejs
+# docker run --name ejr_frontend -it -d -p 80:80 -p 443:443 -v /var/log/nginx:/var/log/nginx --memory="1g"  ejr_frontend
