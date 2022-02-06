@@ -10,7 +10,7 @@
 <!--        </div>-->
         <div>
           <a type="button" :href="getSocialLoginUrl('google')">
-            <img type="button" src="http://dev.en9doors.com/files/public/en9door/website/button/btn_google_signin_light.png"/>
+            <img type="button" src="http://dev.euljiro.com/files/public/en9door/website/button/btn_google_signin_light.png"/>
           </a>
         </div>
       </div>

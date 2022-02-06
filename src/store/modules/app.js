@@ -1,8 +1,7 @@
 import apiCommon from "@/api/modules/api-common";
 
 export default {
-  state: {
-    size: Cookies.get('size') || 'medium',
+  state: { 
     statusOptions: ['ACTIVE', 'PENDING', 'INACTIVE', 'PAID', 'REGISTERED'], 
     weekdays: [
       { value: 1, dayOfWeek: 'Mon', isChecked: false },

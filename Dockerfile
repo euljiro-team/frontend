@@ -16,7 +16,8 @@ RUN npm run build:prod
 #pull image nginx
 FROM nginx as production
 #copy from build output dir -> docker nginx dir
-COPY --from=build-stage /app/dist  /usr/share/nginx/html
+# COPY --from=build-stage /app/dist  /usr/share/nginx/html
+COPY /dist  /usr/share/nginx/html
 #copy from this project etc/nginx/conf -> docker nginx dir
 COPY docker/etc/nginx/nginx.conf /etc/nginx/
 #copy from this project etc/nginx/conf -> docker nginx dir

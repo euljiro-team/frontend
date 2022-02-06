@@ -1,6 +1,38 @@
 <template>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top" aria-label="Third navbar">
-    <div class="container">
+
+    <v-navigation-drawer
+    v-model="drawer"
+    absolute
+    temporary
+    >
+      <v-list>
+        <v-list-item two-line>
+          <v-list-item-avatar>
+            <!--<img src="https://randomuser.me/api/portraits/women/81.jpg">-->
+          </v-list-item-avatar>
+
+          <v-list-item-content>윤가영</v-list-item-title>
+            <v-list-item-subtitle>개발자</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+      <v-divider></v-divider>
+      <v-list dense>
+        <v-list-item v-for="item in items" :key="item.title" link :to="item.to">
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>        
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+    </v-app-bar>
+    <!-- <div class="container">
       <router-link class="navbar-brand" to="/"><img width="20" src="-------------------------" alt="..."/> </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
               aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +58,7 @@
           <li v-if="user.email == null " class="nav-item" @click="closeSideBar()"><router-link class="nav-link" to="/login">Login</router-link></li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </nav>
 </template>
 
@@ -35,9 +67,16 @@ import { mapGetters} from 'vuex'
 
 export default {
   name: 'NavBar',
-  data() {
-    return { }
-  },
+  data: () => ({
+    items : [
+      /* 우선 어디로 이동할지 안정했으니 수강신청 화면으로 이동한다. */
+      {  title : '강사 등록' , icon : 'mdi-account'  , to: '/enrolclasses'} , 
+      {  title : '회원 관리' , icon : 'mdi-account' , to:'/enrolclasses' } , 
+      {  title : '메타 조회' , icon : 'mdi-account' , to: '/meta' } ,
+      {  title : '로그인' , icon : 'mdi-account' , to: '/login' } 
+    ],
+    drawer : false
+  }),
   computed: {
     ...mapGetters(['sidebar','user']),
     classObj() {
