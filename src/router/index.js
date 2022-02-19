@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
- 
-import commonRouter from "@/router/modules/common"; 
+
+import commonRouter from "@/router/modules/common";
 
 Vue.use(Router)
- 
+
 
 const createRouter = () => new Router({
   mode: 'history',
@@ -12,17 +12,19 @@ const createRouter = () => new Router({
     { path: '/', component: () => import('@/views/layout/sideLayout'), name: 'Layout',
       children: [
         // {path: '/', component: () => import(/* webpackChunkName: "common" */'@/views/euljiro/main/main'), name: 'Main', meta: {title: 'Euljiro'}},
-        {path: '/login', component: () => import(/* webpackChunkName: "common" */'@/views/auth/index'), hidden: true},    
+        {path: '/login', component: () => import(/* webpackChunkName: "common" */'@/views/auth/index'), hidden: true},
         ...commonRouter,
         {path: '/oauth/redirect', component: () => import('@/views/auth/redirect'), hidden: true},
-        {path: '/logout', component: () => import('@/views/auth/logout'), hidden: true},   
+        {path: '/logout', component: () => import('@/views/auth/logout'), hidden: true},
         {path : '/enrolclasses',name : 'enrolclasses',component: () => import('@/components/EnrolClasses.vue')},
         {path : '/membership',name : 'membership',component: () => import('@/components/Mmbrship.vue')},
         {path : '/userInfo',name : 'userInfo',component: () => import('@/components/UserInfo.vue')},
         {path : '/notice' ,name : 'notice',component: () => import('@/components/Notice.vue')},
         {path : '/meta',name : 'meta',component: () => import('@/components/meta/Meta.vue')},
+
+        {path : '/manager/notice',name : 'meta',component: () => import('@/views/notice/notice')},
       ]
-    },    
+    },
 // {path: '*', redirect: '/404', hidden: true}
   ],
   scrollBehavior () {
