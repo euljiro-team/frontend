@@ -1,6 +1,6 @@
 <template>
   <div class="container text-center">
-    <div class="row g-3"> 
+    <div class="row g-3">
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 <!--        <div>-->
 <!--          <a type="button" class="btn btn-lg btn-secondary btn-block" style="width: 300px"-->
@@ -10,7 +10,8 @@
 <!--        </div>-->
         <div>
           <a type="button" :href="getSocialLoginUrl('google')">
-            <img type="button" src="http://dev.euljiro.com/files/public/en9door/website/button/btn_google_signin_light.png"/>
+<!--            <img type="button" src="http://dev.euljiro.com/files/public/en9door/website/button/btn_google_signin_light.png"/>-->
+            <img type="button" src="@/assets/oauth/btn_google_signin_light.png"/>
           </a>
         </div>
       </div>
