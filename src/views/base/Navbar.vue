@@ -1,18 +1,14 @@
 <template>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top" aria-label="Third navbar">
-
-    <v-navigation-drawer
-    v-model="drawer"
-    absolute
-    temporary
-    >
+    <v-navigation-drawer v-model="drawer" absolute temporary >
       <v-list>
         <v-list-item two-line>
           <v-list-item-avatar>
             <!--<img src="https://randomuser.me/api/portraits/women/81.jpg">-->
           </v-list-item-avatar>
 
-          <v-list-item-content>윤가영</v-list-item-title>
+          <v-list-item-content>
+            <v-list-item-title>{{user.username}}</v-list-item-title>
             <v-list-item-subtitle>개발자</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
@@ -20,13 +16,15 @@
       <v-divider></v-divider>
       <v-list dense>
         <v-list-item v-for="item in items" :key="item.title" link :to="item.to">
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>        
+          <v-list-group v-if="showMenuOfRole(item.role)">
+            <v-list-item-icon >
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-group>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar app>
@@ -63,17 +61,17 @@
 </template>
 
 <script>
-import { mapGetters} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
   name: 'NavBar',
   data: () => ({
     items : [
       /* 우선 어디로 이동할지 안정했으니 수강신청 화면으로 이동한다. */
-      {  title : '강사 등록' , icon : 'mdi-account'  , to: '/enrolclasses'} , 
-      {  title : '회원 관리' , icon : 'mdi-account' , to:'/enrolclasses' } , 
-      {  title : '메타 조회' , icon : 'mdi-account' , to: '/meta' } ,
-      {  title : '로그인' , icon : 'mdi-account' , to: '/login' } 
+      {  title : '강사 등록' , icon : 'mdi-account', role: 'GUEST', to: '/enrolclasses',  } ,
+      {  title : '회원 관리' , icon : 'mdi-account', role: 'GUEST', to:'/enrolclasses',   } ,
+      {  title : '메타 조회' , icon : 'mdi-account', role: 'GUEST', to: '/meta',   } ,
+      {  title : '로그인' , icon : 'mdi-account'  , role: '', to: '/login',   }
     ],
     drawer : false
   }),
@@ -87,9 +85,17 @@ export default {
     },
 
   },
-  created() { },
-  mounted() { },
+  created() {
+  },
+  beforeMount() {
+    this.fetchUser()
+      .then(() => console.log(this.user.userName))
+  },
+  mounted() {
+
+  },
   methods: {
+    ...mapActions(['fetchUser']),
     showMenuOfRole(menuRole){
       return this.user.accountRoles != null
           ? this.user.accountRoles.includes(menuRole)
