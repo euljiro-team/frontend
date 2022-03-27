@@ -36,21 +36,21 @@ export default {
                 {text : '최종수정자' , value : 'lstMdfId'},
                 {text : '최종수정일' , value : 'lstMdfDt'},
             ]
-        } 
+        }
     },
     methods : {
         getMetaItems : function () {
             var vm = this;
-            this.axios.get('/api/meta/get')
+            this.axios.get('/api/meta')
             .then(res=>{
                 console.log(res.data);
                 this.metaItems = res.data;
-                
+
             }).catch(err=>{
                 console.log(err);
             });
         },
-        insertMetaItem : function () { // 등록 팝업을 보여줄지 말지 
+        insertMetaItem : function () { // 등록 팝업을 보여줄지 말지
             this.isShowInsertMetaModal = !this.isShowInsertMetaModal;
             alert(this.isShowInsertMetaModal)
         }
